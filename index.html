@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Asghar Iqbal | Full-Stack Dev • Automation • AI • Creative Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #ffffff; color: #1a1e2b; line-height: 1.5; scroll-behavior: smooth; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        section { padding: 80px 0; border-bottom: 1px solid #f0f2f8; }
+        section:last-child { border-bottom: none; }
+        h1 { font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1.2rem; }
+        h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.75rem; }
+        .section-badge { display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-size: 0.75rem; font-weight: 600; padding: 0.3rem 1.2rem; border-radius: 40px; margin-bottom: 1.2rem; letter-spacing: 0.3px; }
+        .section-subhead { color: #4a5568; font-size: 1.1rem; margin-bottom: 2rem; border-left: 4px solid #667eea; padding-left: 1.2rem; }
+
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 28px; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; font-size: 0.95rem; cursor: pointer; border: none; }
+        .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; box-shadow: 0 8px 20px rgba(102,126,234,0.25); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(102,126,234,0.35); }
+        .btn-outline { background: transparent; border: 2px solid #e2e8f0; color: #1a1e2b; }
+        .btn-outline:hover { border-color: #667eea; background: rgba(102,126,234,0.05); transform: translateY(-2px); }
+
+        /* Hero */
+        .hero { padding: 100px 0 70px; background: linear-gradient(135deg, #f8faff 0%, #fff5f0 100%); position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; right: -30%; width: 80%; height: 150%; background: radial-gradient(circle, rgba(102,126,234,0.08) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+        .hero-grid { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 3rem; position: relative; z-index: 2; }
+        .hero-text { flex: 1.2; }
+        .hero-text p { font-size: 1.2rem; color: #2d3a4a; margin: 1.2rem 0 2rem; max-width: 580px; line-height: 1.6; }
+        .availability-badge { background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 0.4rem 1.2rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-bottom: 1.2rem; box-shadow: 0 2px 8px rgba(16,185,129,0.2); }
+        .hero-visual { flex: 0.9; background: linear-gradient(145deg, rgba(102,126,234,0.1) 0%, rgba(118,75,162,0.1) 100%); border-radius: 60px; padding: 2rem; text-align: center; box-shadow: 0 30px 45px -20px rgba(0,0,0,0.15); position: relative; backdrop-filter: blur(2px); border: 1px solid rgba(255,255,255,0.5); }
+        .hero-visual .main-icon { font-size: 6rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 1rem; display: inline-block; }
+        .floating-icons { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; }
+        .float-item { position: absolute; font-size: 1.6rem; opacity: 0.6; animation: floatSoft 6s infinite alternate ease-in-out; }
+        @keyframes floatSoft { 0% { transform: translateY(0px) rotate(0deg); } 100% { transform: translateY(20px) rotate(5deg); } }
+
+        /* Grid / Cards */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .card { background: #ffffff; border: 1px solid #eef2fa; border-radius: 28px; padding: 1.8rem; transition: all 0.35s cubic-bezier(0.2,0.9,0.4,1.1); box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+        .card:hover { border-color: #c7d2fe; box-shadow: 0 20px 35px -15px rgba(102,126,234,0.15); transform: translateY(-6px); }
+        .card-icon { font-size: 2.4rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 1.2rem; }
+        .card h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.6rem; color: #1a1e2b; }
+        .card p { color: #4a5568; font-size: 0.9rem; line-height: 1.5; }
+        .tools-badge { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .tool-tag { background: #f1f5f9; font-size: 0.7rem; padding: 0.25rem 0.8rem; border-radius: 30px; font-weight: 500; color: #4a5568; }
+
+        /* Expertise chips */
+        .expertise-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 2rem 0; }
+        .exp-chip { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 0.5rem 1.3rem; border-radius: 60px; font-size: 0.85rem; font-weight: 500; color: #2d3a4a; border: 1px solid #e2e8f0; transition: all 0.2s; }
+        .exp-chip:hover { border-color: #667eea; transform: translateY(-2px); }
+
+        /* Timeline */
+        .timeline-list { display: flex; flex-direction: column; gap: 1.5rem; }
+        .timeline-node { background: #ffffff; border-radius: 28px; border: 1px solid #eef2fa; padding: 1.5rem 2rem; transition: 0.25s; }
+        .timeline-node:hover { border-color: #cbd5e6; background: #fefefe; }
+        .timeline-title { font-weight: 700; font-size: 1.2rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.8rem; margin-bottom: 0.5rem; }
+        .timeline-date-badge { font-size: 0.75rem; background: #eef2ff; padding: 0.25rem 1rem; border-radius: 30px; font-weight: 500; color: #667eea; }
+
+        /* ======== PROJECTS SECTION ======== */
+        #projects { background: #fafbff; }
+        .projects-filter { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
+        .filter-btn { background: #f1f5f9; border: 1px solid #e2e8f0; color: #4a5568; padding: 0.35rem 1rem; border-radius: 40px; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .filter-btn.active, .filter-btn:hover { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-color: transparent; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem; }
+        .project-card { background: #fff; border: 1px solid #eef2fa; border-radius: 16px; padding: 1.2rem 1.4rem; transition: all 0.25s ease; display: flex; flex-direction: column; gap: 0.5rem; }
+        .project-card:hover { border-color: #c7d2fe; box-shadow: 0 6px 20px -8px rgba(102,126,234,0.15); }
+        .project-status { display: inline-flex; align-items: center; gap: 5px; font-size: 0.67rem; font-weight: 700; padding: 0.2rem 0.7rem; border-radius: 20px; width: fit-content; text-transform: uppercase; letter-spacing: 0.4px; }
+        .status-live { background: #d1fae5; color: #065f46; }
+        .status-progress { background: #fef3c7; color: #92400e; }
+        .status-complete { background: #e0e7ff; color: #3730a3; }
+        .project-title { font-size: 1rem; font-weight: 700; color: #1a1e2b; }
+        .project-desc { font-size: 0.83rem; color: #5a6478; line-height: 1.5; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+        .project-tag { background: #f1f5f9; font-size: 0.65rem; padding: 0.18rem 0.6rem; border-radius: 16px; font-weight: 500; color: #4a5568; }
+        .project-links { display: flex; gap: 1rem; padding-top: 0.5rem; border-top: 1px solid #f0f2f8; }
+        .project-link { display: inline-flex; align-items: center; gap: 5px; font-size: 0.78rem; font-weight: 600; color: #667eea; text-decoration: none; transition: all 0.2s; }
+        .project-link:hover { color: #764ba2; }
+
+        /* Contact */
+        .contact-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin: 2rem 0; }
+        .contact-method { background: #ffffff; border: 2px solid #eef2fa; border-radius: 60px; padding: 0.9rem 2rem; display: inline-flex; align-items: center; gap: 12px; font-weight: 600; text-decoration: none; color: #1a1e2b; transition: all 0.25s; }
+        .contact-method i { font-size: 1.3rem; }
+        .contact-method.whatsapp:hover { background: #25D366; border-color: #25D366; color: white; }
+        .contact-method.telegram:hover { background: #26A5E4; border-color: #26A5E4; color: white; }
+        .contact-method.email:hover { background: #EA4335; border-color: #EA4335; color: white; }
+
+        .footer { background: #fafcff; padding: 2rem 0; text-align: center; font-size: 0.85rem; color: #6c757d; border-top: 1px solid #eef2fa; }
+
+        /* Grocery CTA banner */
+        .grocery-cta { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 28px; padding: 2.5rem; color: white; margin-top: 2.5rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; justify-content: space-between; }
+        .grocery-cta h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+        .grocery-cta p { opacity: 0.9; font-size: 0.9rem; max-width: 560px; }
+        .btn-white { background: white; color: #667eea; font-weight: 700; }
+        .btn-white:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.15); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            section { padding: 50px 0; }
+            .hero { padding: 50px 0 40px; }
+            .hero-grid { flex-direction: column; text-align: center; }
+            .hero-text p { max-width: 100%; margin-left: auto; margin-right: auto; }
+            .hero-visual { width: 100%; max-width: 320px; margin: 0 auto; padding: 1.8rem; }
+            .hero-visual .main-icon { font-size: 4rem; }
+            .grid-3 { grid-template-columns: 1fr; gap: 1.5rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .timeline-title { flex-direction: column; align-items: flex-start; }
+            .contact-method { padding: 0.7rem 1.5rem; font-size: 0.9rem; }
+            .grocery-cta { text-align: center; justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            .contact-method { width: 100%; justify-content: center; }
+        }
+        .hero-text p, .card p, .timeline-node p { color: #2c3e50; }
+    </style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="container hero-grid">
+        <div class="hero-text">
+            <div class="availability-badge"><i class="fas fa-bolt"></i> Full-time Dev + Freelance | Available worldwide</div>
+            <h1>Asghar Iqbal <span style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; background-clip: text; color: transparent;">— Build • Automate • Create</span></h1>
+            <p>Full-stack developer, automation architect, and creative partner. I craft <strong>websites, apps, bots (Telegram/WhatsApp), CRM workflows, AI content, and lead generation systems</strong> that actually deliver. From hosting & security to app publishing — I cover the full cycle.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                <a href="#contact-zone" class="btn btn-primary"><i class="fas fa-comment-dots"></i> Hire me</a>
+                <a href="#projects" class="btn btn-outline"><i class="fas fa-folder-open"></i> View Projects</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <i class="fas fa-cubes main-icon"></i>
+            <div class="floating-icons">
+                <i class="fab fa-whatsapp float-item" style="top:10%;left:5%;font-size:1.4rem;"></i>
+                <i class="fab fa-telegram float-item" style="bottom:15%;right:8%;animation-duration:5s;"></i>
+                <i class="fas fa-robot float-item" style="top:35%;right:2%;font-size:1.6rem;animation-duration:7s;"></i>
+                <i class="fas fa-cloud-upload-alt float-item" style="bottom:25%;left:10%;animation-duration:6.5s;"></i>
+                <i class="fab fa-react float-item" style="top:65%;left:-5%;font-size:1.3rem;animation-duration:8s;"></i>
+                <i class="fab fa-node-js float-item" style="top:80%;right:15%;font-size:1.3rem;"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services -->
+<section id="services-full">
+    <div class="container">
+        <span class="section-badge">⚡ Full-spectrum expertise</span>
+        <h2>Everything under one roof</h2>
+        <div class="section-subhead">Development • Automation • Bots • AI • Cloud • Creative</div>
+        <div class="grid-3">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-globe"></i></div>
+                <h3>Web & App Development</h3>
+                <p>React, Node.js, Laravel, WordPress (custom themes/templates), React Native cross-platform apps, full-stack solutions, responsive websites, PWA, hosting & security.</p>
+                <div class="tools-badge"><span class="tool-tag">Laravel</span><span class="tool-tag">React/Next</span><span class="tool-tag">WordPress</span><span class="tool-tag">React Native</span><span class="tool-tag">AWS/Vercel</span></div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-robot"></i></div>
+                <h3>Bots & Automation</h3>
+                <p>Telegram bots, WhatsApp automation, lead gen bots, n8n workflows, Zapier/Make automations, and OpenClaw integration for advanced conversational AI.</p>
+                <div class="tools-badge"><span class="tool-tag">OpenClaw</span><span class="tool-tag">n8n</span><span class="tool-tag">Zapier/Make</span><span class="tool-tag">Telegram API</span></div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Lead Generation & CRM</h3>
+                <p>Automated lead collection, CRM integration (HubSpot, Pipedrive, GoHighLevel), email funnels, and audience targeting. Systems that capture and nurture leads 24/7.</p>
+                <div class="tools-badge"><span class="tool-tag">GoHighLevel</span><span class="tool-tag">HubSpot</span><span class="tool-tag">Make/n8n</span></div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-chalkboard-user"></i></div>
+                <h3>Social Media Manager & VA</h3>
+                <p>Content calendars, engagement, scheduling, account management, virtual assistance, presentations (Canva, PowerPoint), and content design.</p>
+                <div class="tools-badge"><span class="tool-tag">Metricool</span><span class="tool-tag">Canva/PPT</span><span class="tool-tag">Asana/Notion</span></div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-video"></i></div>
+                <h3>Video Editing & AI Content</h3>
+                <p>Premiere Pro, CapCut, AI avatars, faceless videos, motion graphics, and AI voiceovers. Viral-ready short-form content and YouTube edits.</p>
+                <div class="tools-badge"><span class="tool-tag">HeyGen</span><span class="tool-tag">Synthesia</span><span class="tool-tag">RunwayML</span></div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                <h3>Hosting, Security & Publishing</h3>
+                <p>Website hosting setup, cloud hosting (AWS, Google Cloud), SSL, security audits, app store publishing (Google Play, App Store), and continuous monitoring.</p>
+                <div class="tools-badge"><span class="tool-tag">Google Workspace</span><span class="tool-tag">cPanel/Docker</span><span class="tool-tag">Firebase</span></div>
+            </div>
+        </div>
+        <div class="expertise-strip">
+            <span class="exp-chip"><i class="fab fa-whatsapp"></i> WhatsApp Bots</span>
+            <span class="exp-chip"><i class="fab fa-telegram"></i> Telegram Bots</span>
+            <span class="exp-chip"><i class="fas fa-brain"></i> AI Agents</span>
+            <span class="exp-chip"><i class="fas fa-chalkboard"></i> Presentations</span>
+            <span class="exp-chip"><i class="fas fa-database"></i> CRM Management</span>
+            <span class="exp-chip"><i class="fab fa-google"></i> Google Workspace</span>
+            <span class="exp-chip"><i class="fas fa-shield-alt"></i> Security Hardening</span>
+            <span class="exp-chip"><i class="fas fa-code-branch"></i> n8n Workflows</span>
+            <span class="exp-chip"><i class="fab fa-wordpress"></i> WP Themes</span>
+            <span class="exp-chip"><i class="fab fa-laravel"></i> Laravel</span>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS SECTION -->
+<section id="projects">
+    <div class="container">
+        <span class="section-badge">🗂️ Selected work</span>
+        <h2>Projects</h2>
+        <div class="section-subhead">A selection of apps, websites, and platforms I've built — more available on request</div>
+
+        <div class="projects-filter">
+            <button class="filter-btn active" onclick="filterProjects('all', this)">All Projects</button>
+            <button class="filter-btn" onclick="filterProjects('app', this)">📱 Mobile Apps</button>
+            <button class="filter-btn" onclick="filterProjects('web', this)">🌐 Websites</button>
+            <button class="filter-btn" onclick="filterProjects('platform', this)">⚙️ Platforms</button>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+
+            <!-- PollMeNow -->
+            <div class="project-card" data-cat="app platform">
+                
+                    <span class="project-status status-progress"><i class="fas fa-flask" style="font-size:0.6rem;"></i> Beta Testing</span>
+                    <div class="project-title">PollMeNow — Real-Time Polling Platform</div>
+                    <p class="project-desc">A full-featured web & mobile polling platform. Users create polls, share links, vote in real-time, and view live analytics. Built with Next.js and TypeScript. Currently distributed to beta testers — public launch imminent.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Next.js</span><span class="project-tag">TypeScript</span><span class="project-tag">Real-time</span><span class="project-tag">Web + Mobile</span><span class="project-tag">Beta</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://pollmenow.com" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Preview</a>
+                        <a href="https://github.com/aliraza1155/pollmenow-web" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+            </div>
+
+            <!-- Islamic App -->
+            <div class="project-card" data-cat="app">
+                
+                    <span class="project-status status-complete"><i class="fas fa-check-circle" style="font-size:0.7rem;"></i> Near Complete</span>
+                    <div class="project-title">Siraj Al Imaan — Islamic Companion App</div>
+                    <p class="project-desc">A comprehensive Islamic mobile app featuring Quran recitation & listening, Hadith collections, Prayer times with global timezone support & smart reminders, daily Duas and Dhikrs. A complete spiritual companion for Muslim users worldwide.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">React Native</span><span class="project-tag">Prayer Times API</span><span class="project-tag">Audio Player</span><span class="project-tag">iOS & Android</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#contact-zone" class="project-link"><i class="fas fa-comment-dots"></i> Request Demo</a>
+                        <a href="https://github.com/aliraza1155/dua-dhikr" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+            </div>
+
+            <!-- Wellness App -->
+            <div class="project-card" data-cat="app">
+                
+                    <span class="project-status status-complete"><i class="fas fa-check-circle" style="font-size:0.7rem;"></i> Completed</span>
+                    <div class="project-title">Throne XElite — AI Wellness & Life Coach App</div>
+                    <p class="project-desc">Users input their current situation across health, finances, relationships, and lifestyle. AI generates a personalized 1-month, 3-month, or 6-month transformation plan to become their highest self.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">React Native</span><span class="project-tag">AI / GPT</span><span class="project-tag">Personalization</span><span class="project-tag">Wellness</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#contact-zone" class="project-link"><i class="fas fa-comment-dots"></i> Request Demo</a>
+                    </div>
+            </div>
+
+            <!-- Mind Soul App -->
+            <div class="project-card" data-cat="app">
+                
+                    <span class="project-status status-complete"><i class="fas fa-check-circle" style="font-size:0.7rem;"></i> Completed</span>
+                    <div class="project-title">MindSoul — Relaxation & Mental Wellness</div>
+                    <p class="project-desc">A calming mobile experience with guided meditations, ambient soundscapes, breathing exercises, and mindfulness tools. Designed to help users de-stress and find mental clarity daily.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">React Native</span><span class="project-tag">Audio</span><span class="project-tag">Animations</span><span class="project-tag">Mental Health</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#contact-zone" class="project-link"><i class="fas fa-comment-dots"></i> Request Demo</a>
+                    </div>
+            </div>
+
+            <!-- AI Personal Manager -->
+            <div class="project-card" data-cat="app">
+                
+                    <span class="project-status status-complete"><i class="fas fa-check-circle" style="font-size:0.7rem;"></i> Completed</span>
+                    <div class="project-title">TaskMind — AI Personal Manager App</div>
+                    <p class="project-desc">An intelligent productivity app that manages your meetings, tasks, notes, and reminders through AI. Suggests priorities, auto-schedules, and gives smart daily briefings — like having a personal chief of staff.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">React Native</span><span class="project-tag">AI</span><span class="project-tag">Calendar API</span><span class="project-tag">Productivity</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#contact-zone" class="project-link"><i class="fas fa-comment-dots"></i> Request Demo</a>
+                    </div>
+            </div>
+
+            <!-- Utility App -->
+            <div class="project-card" data-cat="app">
+                
+                    <span class="project-status status-complete"><i class="fas fa-check-circle" style="font-size:0.7rem;"></i> Completed</span>
+                    <div class="project-title">Personal Manager — Everyday Utility App</div>
+                    <p class="project-desc">An all-in-one utility app covering everyday essentials: unit converters, calculators, QR scanner, PDF viewer, quick notes, and more. Built for speed and simplicity — the kind of Swiss-army app every phone needs.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">React Native</span><span class="project-tag">Utilities</span><span class="project-tag">Offline-ready</span><span class="project-tag">iOS & Android</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#contact-zone" class="project-link"><i class="fas fa-comment-dots"></i> Request Demo</a>
+                    </div>
+            </div>
+
+            <!-- Grocery / Multi-vendor commerce reference -->
+            <div class="project-card" data-cat="app platform">
+                
+                    <span class="project-status status-complete"><i class="fas fa-check-circle" style="font-size:0.7rem;"></i> Completed</span>
+                    <div class="project-title">Multi-Vendor E-commerce — Web & App</div>
+                    <p class="project-desc">Built end-to-end e-commerce solutions across multiple client projects: product listings, cart & checkout, order management, vendor dashboards, payment gateway integration, and real-time order tracking. Experience covers both web platforms and React Native mobile apps.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">React Native</span><span class="project-tag">Laravel</span><span class="project-tag">Stripe / Payments</span><span class="project-tag">Multi-vendor</span><span class="project-tag">Order Tracking</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#contact-zone" class="project-link"><i class="fas fa-comment-dots"></i> Discuss Your Project</a>
+                    </div>
+            </div>
+
+            <!-- The Elite Vibe -->
+            <div class="project-card" data-cat="web platform">
+                
+                    <span class="project-status status-live"><i class="fas fa-circle" style="font-size:0.5rem;"></i> Live</span>
+                    <div class="project-title">The Elite Vibe — Marketplace Platform</div>
+                    <p class="project-desc">A premium marketplace platform built with TypeScript. Full product listings, user accounts, checkout flow, and a polished brand experience deployed at theelitevibe.com.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">TypeScript</span><span class="project-tag">Next.js</span><span class="project-tag">Marketplace</span><span class="project-tag">Vercel</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://theelitevibe.com" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                        <a href="https://github.com/aliraza1155/the-elite-vibe" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+            </div>
+
+            <!-- Sofia Varelli Fan Site -->
+            <div class="project-card" data-cat="web">
+                
+                    <span class="project-status status-live"><i class="fas fa-circle" style="font-size:0.5rem;"></i> Live</span>
+                    <div class="project-title">SofiaVarelli.com — Fan & Brand Site</div>
+                    <p class="project-desc">A creator brand website for a public figure. Custom-designed, performance-optimized, with engaging sections and a professional online presence. Deployed at sofiavarelli.com.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">JavaScript</span><span class="project-tag">Creative Web</span><span class="project-tag">Vercel</span><span class="project-tag">Brand Site</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://sofiavarelli.com" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                    </div>
+            </div>
+
+            <!-- Global Fan Flicks -->
+            <div class="project-card" data-cat="web platform">
+                
+                    <span class="project-status status-live"><i class="fas fa-circle" style="font-size:0.5rem;"></i> Live</span>
+                    <div class="project-title">Global Fan Flicks — Content Platform</div>
+                    <p class="project-desc">A TypeScript-built content streaming & fan platform. Supports creator content, user browsing, subscriptions and a clean media-forward UI. Live on Vercel.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">TypeScript</span><span class="project-tag">Next.js</span><span class="project-tag">Media Platform</span><span class="project-tag">Vercel</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://globalfanflicks.co" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                        <a href="https://github.com/aliraza1155/global-fan-flicks" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+            </div>
+
+            <!-- Presale DApp -->
+            <div class="project-card" data-cat="web platform">
+                
+                    <span class="project-status status-live"><i class="fas fa-circle" style="font-size:0.5rem;"></i> Live</span>
+                    <div class="project-title">Presale DApp — Web3 Token Sale Platform</div>
+                    <p class="project-desc">A decentralized application for token presales. Connects wallets, handles token purchases, shows live sale progress, and integrates with smart contracts. Web3-ready from day one.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Web3</span><span class="project-tag">Solidity</span><span class="project-tag">Wallet Connect</span><span class="project-tag">Smart Contracts</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://presale-dapp-new.vercel.app" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Visit DApp</a>
+                        <a href="https://github.com/aliraza1155/presale-dapp" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+            </div>
+
+            <!-- Akhuwat Funds -->
+            <div class="project-card" data-cat="web">
+                
+                    <span class="project-status status-live"><i class="fas fa-circle" style="font-size:0.5rem;"></i> Live</span>
+                    <div class="project-title">AkhuwatFunds.com — Microfinance Website</div>
+                    <p class="project-desc">A professional website for a microfinance & social lending organization. Trust-building design, application flows, program showcases, and a mobile-first responsive build.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">WordPress</span><span class="project-tag">Custom Theme</span><span class="project-tag">NGO / Finance</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://akhuwatfunds.com" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                    </div>
+            </div>
+
+            <!-- Peak Vista Travels -->
+            <div class="project-card" data-cat="web">
+                
+                    <span class="project-status status-live"><i class="fas fa-circle" style="font-size:0.5rem;"></i> Live</span>
+                    <div class="project-title">PeakVistaTravels.com — Travel Agency Site</div>
+                    <p class="project-desc">A full travel agency website with tour packages, booking inquiry forms, destination galleries, and an admin content panel. SEO-optimized and mobile-responsive.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">WordPress</span><span class="project-tag">Travel</span><span class="project-tag">Booking Forms</span><span class="project-tag">SEO</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://peakvistatravels.com" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                    </div>
+            </div>
+
+            <!-- AYStay Bookings -->
+            <div class="project-card" data-cat="web platform">
+                
+                    <span class="project-status status-live"><i class="fas fa-circle" style="font-size:0.5rem;"></i> Live</span>
+                    <div class="project-title">AYStayBookings.com — Accommodation Platform</div>
+                    <p class="project-desc">A property booking platform with listings, availability calendars, real-time reservation management, and a clean guest-facing UI. Built for short-term rental management.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Laravel</span><span class="project-tag">Booking System</span><span class="project-tag">Calendar Integration</span><span class="project-tag">Hospitality</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://aystaybookings.pro" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                    </div>
+            </div>
+
+        </div>
+
+        <!-- More projects note -->
+        <div style="background: #f8faff; border: 1px solid #e0e7ff; border-radius: 20px; padding: 1.2rem 1.8rem; margin-top: 1.5rem;">
+            <p style="font-size:0.88rem; color:#4a5568; line-height:1.6;"><i class="fas fa-lock" style="color:#667eea;"></i> <strong>This is a curated selection.</strong> A significant portion of my work is covered under NDA — including agency projects, client platforms, and enterprise tools that can't be publicly listed. Beyond what's shown here, I've also delivered 40+ video editing and motion graphics projects. Full details available in a private conversation.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- Experience Timeline -->
+<section>
+    <div class="container">
+        <span class="section-badge">📌 Real journey, real impact</span>
+        <h2>How my expertise evolved</h2>
+        <div class="section-subhead">Full-time developer since 2022 • Freelance across creative & automation roles</div>
+        <div class="timeline-list">
+            <div class="timeline-node">
+                <div class="timeline-title"><span>💻 Full‑stack Dev & App Development (React, Laravel, React Native, WordPress)</span><span class="timeline-date-badge">2022 – present (full-time)</span></div>
+                <p style="margin-top:0.5rem;">Building custom websites, React/Node/Laravel apps, React Native cross-platform mobile apps, WordPress custom themes/templates, managing hosting, security, and deployment. Published apps on stores, maintained 20+ client sites.</p>
+            </div>
+            <div class="timeline-node">
+                <div class="timeline-title"><span>🎬 Video Editor & Graphics Designer</span><span class="timeline-date-badge">2020 – present</span></div>
+                <p>Editing YouTube videos, short-form content, creating motion graphics, thumbnails, and AI-assisted videos. Over 100+ projects delivered.</p>
+            </div>
+            <div class="timeline-node">
+                <div class="timeline-title"><span>🤖 Automation & Bot Specialist (Telegram/WhatsApp, n8n, Zapier, Make)</span><span class="timeline-date-badge">2023 – present</span></div>
+                <p>Built custom Telegram bots, WhatsApp automation for lead qualification, n8n workflows, integrated OpenClaw for advanced conversational AI. Automated lead gen flows generating 200+ leads/month for clients.</p>
+            </div>
+            <div class="timeline-node">
+                <div class="timeline-title"><span>📋 Virtual Assistant / Account & CRM Manager</span><span class="timeline-date-badge">2020 – now</span></div>
+                <p>Supporting founders with calendar, email management, CRM (HubSpot/Pipedrive), Google Workspace admin, and presentation design. Helped 8+ businesses streamline operations.</p>
+            </div>
+            <div class="timeline-node">
+                <div class="timeline-title"><span>🚀 Lead Generation & Marketing Automation</span><span class="timeline-date-badge">2025 – present</span></div>
+                <p>Full funnel automation: lead scraping, email sequences, LinkedIn automation, n8n/Zapier workflows, and AI outreach. Also skilled in social media growth & content strategy.</p>
+            </div>
+        </div>
+        <div style="background: linear-gradient(135deg, #f8faff 0%, #fff5f0 100%); border-radius: 28px; padding: 1.2rem 1.8rem; margin-top: 1.8rem;">
+            <p><i class="fas fa-check-circle" style="color:#667eea;"></i> <strong>Currently open for:</strong> Full-time, part-time, freelance — across development, automation, bot creation, creative services, and virtual assistance. I adapt to your workflow and deliver with precision.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Tech Stack -->
+<section style="background: #ffffff;">
+    <div class="container" style="text-align: center;">
+        <span class="section-badge">🛠️ Tech stack & tools I master</span>
+        <h2>Popular platforms & products I work with</h2>
+        <div class="expertise-strip" style="margin: 1rem 0 2rem;">
+            <span class="exp-chip"><i class="fas fa-bolt"></i> OpenClaw</span>
+            <span class="exp-chip"><i class="fab fa-whatsapp"></i> WhatsApp Cloud API</span>
+            <span class="exp-chip"><i class="fab fa-telegram"></i> Telegram Bot API</span>
+            <span class="exp-chip"><i class="fas fa-chart-simple"></i> GoHighLevel</span>
+            <span class="exp-chip"><i class="fas fa-cloud"></i> AWS / Vercel</span>
+            <span class="exp-chip"><i class="fas fa-database"></i> Supabase / Firebase</span>
+            <span class="exp-chip"><i class="fas fa-robot"></i> Zapier / Make / n8n</span>
+            <span class="exp-chip"><i class="fab fa-laravel"></i> Laravel</span>
+            <span class="exp-chip"><i class="fab fa-react"></i> React Native</span>
+            <span class="exp-chip"><i class="fab fa-wordpress"></i> WordPress</span>
+        </div>
+        <p style="max-width: 750px; margin: 0 auto;">From setting up OpenClaw bots to deploying full-stack apps on Google Cloud, I bring deep technical + creative know-how. I also handle <strong>presentations, CRM migrations, Google Workspace optimization, and app publishing</strong>.</p>
+    </div>
+</section>
+
+<!-- Why me -->
+<section>
+    <div class="container" style="text-align: center; max-width: 850px;">
+        <span class="section-badge">💡 Why partner with me?</span>
+        <h2>Reliable, fast, and fully invested</h2>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin: 2rem 0;">
+            <div><i class="fas fa-code" style="color:#667eea;"></i> Full‑stack + automation</div>
+            <div><i class="fas fa-bolt" style="color:#667eea;"></i> Same-day responses</div>
+            <div><i class="fas fa-hand-peace" style="color:#667eea;"></i> 100% project ownership</div>
+            <div><i class="fas fa-video" style="color:#667eea;"></i> Video + creative included</div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact-zone">
+    <div class="container" style="text-align: center;">
+        <span class="section-badge">📬 Start a conversation</span>
+        <h2>Let's build, automate, or create — <br>your next project starts here</h2>
+        <p style="margin: 1rem auto; max-width: 550px;">Message me on WhatsApp, Telegram, or email. I'm available for full-time roles, freelance, or part-time collaborations.</p>
+        <div class="contact-row">
+            <a href="https://wa.me/923294069115?text=Hi%20Asghar%2C%20I%20saw%20your%20portfolio%20and%20want%20to%20discuss%20a%20project" class="contact-method whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://t.me/asghariqbal" class="contact-method telegram" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="mailto:asghariqbalsandeela@gmail.com?subject=Hiring%20Inquiry%20from%20Portfolio&body=Hi%20Asghar%2C%20I'd%20like%20to%20hire%20you%20for%20a%20project." class="contact-method email"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+        <p style="font-size: 0.85rem;"><i class="fas fa-clock"></i> Usually replies within 2–4 hours • Available worldwide</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2025 Asghar Iqbal — Full‑Stack Dev • Automation • Bots • AI • Creative Tech</p>
+        <p style="margin-top: 0.4rem;">Websites • Apps • Bots • Lead Gen • Video • VA • CRM • Cloud • Hosting & Security</p>
+    </div>
+</footer>
+
+<script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === "#" || targetId === "") return;
+            const target = document.querySelector(targetId);
+            if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        });
+    });
+
+    // Project filter
+    function filterProjects(cat, btn) {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.project-card').forEach(card => {
+            const cats = card.dataset.cat || '';
+            card.style.display = (cat === 'all' || cats.includes(cat)) ? 'flex' : 'none';
+        });
+    }
+</script>
+</body>
+</html>

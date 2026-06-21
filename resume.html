@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asghar Iqbal | Resume | Full-Stack Developer & Automation Expert</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #eef2f8;
+            padding: 20px;
+            font-size: 13px;
+            line-height: 1.4;
+            color: #1a1e2b;
+        }
+
+        .resume-wrapper {
+            max-width: 960px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+        }
+
+        /* ── HEADER ── */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 22px 30px;
+            color: white;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        .name { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 3px; }
+        .tagline { font-size: 0.85rem; opacity: 0.95; margin-bottom: 10px; }
+        .contacts { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.68rem; }
+        .contacts a, .contacts span {
+            color: white; text-decoration: none;
+            display: inline-flex; align-items: center; gap: 5px;
+        }
+
+        /* ── TWO-COLUMN BODY using CSS TABLE ── */
+        /* This is the key fix: display:table is handled correctly by browsers during print,
+           unlike flexbox/grid which cause blank-page gaps */
+        .body-table {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+        .sidebar {
+            display: table-cell;
+            width: 31%;
+            background: #f8faff;
+            padding: 16px 18px;
+            border-right: 1px solid #e8edf8;
+            vertical-align: top;
+        }
+        .main {
+            display: table-cell;
+            width: 69%;
+            padding: 16px 22px;
+            vertical-align: top;
+        }
+
+        /* ── SECTIONS ── */
+        .section { margin-bottom: 14px; }
+        .section-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #667eea;
+            border-bottom: 1.5px solid #e8edf8;
+            padding-bottom: 3px;
+            margin-bottom: 8px;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* ── PROFILE ── */
+        .profile-text { font-size: 0.7rem; color: #374151; line-height: 1.45; }
+        .badges { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+        .badge {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white; padding: 2px 8px;
+            border-radius: 20px; font-size: 0.58rem; font-weight: 600;
+            -webkit-print-color-adjust: exact; print-color-adjust: exact;
+        }
+
+        /* ── CREDENTIALS ── */
+        .cred-item {
+            display: flex; align-items: center; gap: 6px;
+            background: #fef3c7; border-radius: 6px;
+            padding: 4px 8px; margin-bottom: 5px;
+            font-size: 0.62rem; font-weight: 600; color: #1a1e2b;
+            -webkit-print-color-adjust: exact; print-color-adjust: exact;
+        }
+        .cred-item i { color: #f59e0b; font-size: 0.65rem; }
+
+        /* ── SKILLS ── */
+        .skill-group { margin-bottom: 8px; }
+        .skill-label { font-size: 0.65rem; font-weight: 600; color: #374151; margin-bottom: 4px; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 3px; }
+        .skill-tag {
+            background: #f1f5f9; color: #374151;
+            padding: 2px 7px; border-radius: 20px;
+            font-size: 0.6rem; font-weight: 500;
+        }
+
+        /* ── EXPERIENCE ── */
+        .exp-item { margin-bottom: 12px; }
+        .exp-row {
+            display: flex; justify-content: space-between;
+            align-items: baseline; flex-wrap: wrap; margin-bottom: 2px;
+        }
+        .exp-role { font-weight: 700; font-size: 0.8rem; color: #111827; }
+        .exp-date {
+            font-size: 0.6rem; font-weight: 600; color: #667eea;
+            background: #eef2ff; padding: 1px 7px; border-radius: 20px;
+            -webkit-print-color-adjust: exact; print-color-adjust: exact;
+        }
+        .exp-company {
+            font-size: 0.65rem; font-weight: 600; color: #6b7280;
+            display: flex; align-items: center; gap: 6px;
+            flex-wrap: wrap; margin-bottom: 4px;
+        }
+        .work-type {
+            background: #ede9fe; color: #7c3aed;
+            font-size: 0.58rem; padding: 1px 6px;
+            border-radius: 20px; font-weight: 500;
+            -webkit-print-color-adjust: exact; print-color-adjust: exact;
+        }
+        .exp-bullets { padding-left: 0; list-style: none; }
+        .exp-bullets li {
+            font-size: 0.67rem; color: #4b5563;
+            padding-left: 12px; position: relative;
+            margin-bottom: 2px; line-height: 1.4;
+        }
+        .exp-bullets li::before {
+            content: "▸"; position: absolute; left: 0;
+            color: #667eea; font-size: 0.6rem; top: 1px;
+        }
+
+        /* ── WEBSITES ROW ── */
+        .app-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+
+        /* ── PROJECTS GRID ── */
+        .proj-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 12px;
+        }
+        .proj-name { font-size: 0.7rem; font-weight: 700; color: #111827; margin-bottom: 1px; }
+        .proj-desc { font-size: 0.62rem; color: #6b7280; }
+
+        /* ── UPCOMING ── */
+        .upcoming-list { padding-left: 0; list-style: none; }
+        .upcoming-list li {
+            font-size: 0.67rem; color: #4b5563;
+            padding-left: 12px; position: relative;
+            margin-bottom: 3px; line-height: 1.4;
+        }
+        .upcoming-list li::before {
+            content: "▸"; position: absolute; left: 0;
+            color: #667eea; font-size: 0.6rem; top: 1px;
+        }
+
+        /* ── PRINT HINT ── */
+        .print-hint {
+            text-align: center; margin-top: 10px;
+            font-size: 0.65rem; color: #9ca3af;
+        }
+
+        /* ════════════════════════════════════
+           PRINT STYLES
+           The CSS table layout is the core fix.
+           We just need to ensure colors print
+           and margins are tight.
+        ════════════════════════════════════ */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 0.5cm 0.6cm;
+            }
+
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+                font-size: 9pt;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .resume-wrapper {
+                box-shadow: none;
+                max-width: 100%;
+                margin: 0;
+            }
+
+            .print-hint { display: none; }
+
+            /* CSS table layout prints correctly — no gaps! */
+            .body-table { display: table; width: 100%; }
+            .sidebar { display: table-cell; }
+            .main { display: table-cell; }
+
+            /* Ensure gradient header prints */
+            .header {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            /* Prevent awkward breaks */
+            .exp-item { break-inside: avoid; page-break-inside: avoid; }
+            .section { break-inside: avoid; page-break-inside: avoid; }
+            .proj-grid { break-inside: avoid; }
+        }
+
+        /* ── MOBILE FALLBACK ── */
+        @media (max-width: 600px) {
+            .body-table, .sidebar, .main { display: block; width: 100%; }
+            .sidebar { border-right: none; border-bottom: 1px solid #e8edf8; }
+        }
+    </style>
+</head>
+<body>
+<div class="resume-wrapper">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="name">ASGHAR IQBAL</div>
+        <div class="tagline">Full-Stack Developer &bull; Automation Architect &bull; AI Content Creator &bull; Co-Founder @ Upnovix Digital</div>
+        <div class="contacts">
+            <span><i class="fas fa-phone-alt"></i> +92 329 4069115</span>
+            <a href="mailto:asghariqbalsandeela@gmail.com"><i class="fas fa-envelope"></i> asghariqbalsandeela@gmail.com</a>
+            <span><i class="fas fa-map-marker-alt"></i> Remote Worldwide</span>
+            <a href="#"><i class="fab fa-linkedin"></i> linkedin.com/in/asghariqbal</a>
+            <a href="#"><i class="fab fa-github"></i> github.com/aliraza1155</a>
+        </div>
+    </div>
+
+    <!-- TWO-COLUMN BODY (CSS table = no print gap) -->
+    <div class="body-table">
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+
+            <div class="section">
+                <div class="section-title">PROFILE</div>
+                <div class="profile-text">Full-stack developer, automation specialist, and AI content creator with 4+ years of experience. Co-founder at Upnovix Digital. Built 20+ websites, 5 mobile apps, custom themes/plugins, automation systems, and won AI video contest.</div>
+                <div class="badges">
+                    <span class="badge">Full-Time</span>
+                    <span class="badge">Part-Time</span>
+                    <span class="badge">Freelance</span>
+                    <span class="badge">Remote Only</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">CREDENTIALS</div>
+                <div class="cred-item"><i class="fas fa-star"></i> 4.6/5 &mdash; Freelancer.com (15+ Projects)</div>
+                <div class="cred-item"><i class="fas fa-trophy"></i> Winner &mdash; AI Video Contest, Freelancer.com</div>
+                <div class="cred-item"><i class="fas fa-medal"></i> Client Endorsement &mdash; LinkedIn</div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">TECH STACK</div>
+                <div class="skill-group">
+                    <div class="skill-label">Web Development</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">React</span><span class="skill-tag">Node.js</span><span class="skill-tag">Laravel</span><span class="skill-tag">WordPress</span><span class="skill-tag">Custom Themes</span><span class="skill-tag">Plugins</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label">Mobile Apps</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">React Native</span><span class="skill-tag">iOS/Android</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label">Automation</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">n8n</span><span class="skill-tag">Zapier</span><span class="skill-tag">Make</span><span class="skill-tag">Telegram API</span><span class="skill-tag">WhatsApp API</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label">AI &amp; Bots</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">OpenAI</span><span class="skill-tag">HeyGen</span><span class="skill-tag">Custom AI Models</span><span class="skill-tag">Agentic AI</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label">Creative Tools</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Premiere Pro</span><span class="skill-tag">After Effects</span><span class="skill-tag">CapCut</span><span class="skill-tag">Photoshop</span><span class="skill-tag">Canva</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label">Cloud &amp; Hosting</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Netlify</span><span class="skill-tag">Vercel</span><span class="skill-tag">AWS</span><span class="skill-tag">cPanel</span>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /sidebar -->
+
+        <!-- MAIN CONTENT -->
+        <div class="main">
+
+            <div class="section">
+                <div class="section-title">WORK EXPERIENCE</div>
+
+                <div class="exp-item">
+                    <div class="exp-row">
+                        <span class="exp-role">Co-Founder &amp; Lead Developer</span>
+                        <span class="exp-date">2024 – Present</span>
+                    </div>
+                    <div class="exp-company">Digital Upnovix <span class="work-type">Co-Founder &bull; Remote</span></div>
+                    <ul class="exp-bullets"><li>Building digital agency — managing client projects, development team, and business operations. Website live at digitalupnovix.com.</li></ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-row">
+                        <span class="exp-role">Manager &amp; Account Lead</span>
+                        <span class="exp-date">2023 – Present</span>
+                    </div>
+                    <div class="exp-company">The Elite Vibe (Models Agency) <span class="work-type">Management &bull; Remote</span></div>
+                    <ul class="exp-bullets"><li>Managing social media, content strategy, account management, and executive support for models agency.</li></ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-row">
+                        <span class="exp-role">App &amp; Website Developer</span>
+                        <span class="exp-date">2025 – Present</span>
+                    </div>
+                    <div class="exp-company">Digital Nerd <span class="work-type">Freelance &bull; Remote</span></div>
+                    <ul class="exp-bullets"><li>Building cross-platform mobile apps with React Native for iOS/Android. Developing custom websites with modern frameworks.</li></ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-row">
+                        <span class="exp-role">Full-Stack Developer &amp; Automation Specialist</span>
+                        <span class="exp-date">2022 – Present</span>
+                    </div>
+                    <div class="exp-company">Self-Employed / Freelance <span class="work-type">Remote &bull; 20+ Clients</span></div>
+                    <ul class="exp-bullets">
+                        <li>Delivered 20+ custom websites using React, Laravel, WordPress — including custom themes, templates, and plugins built from scratch.</li>
+                        <li>Built 5 cross-platform mobile apps with React Native (iOS &amp; Android) — pending client publishing.</li>
+                        <li>Created automation workflows for lead generation: Twitter, Reddit, Google Maps — actively running for clients.</li>
+                        <li>Developed 3 Telegram bots, WhatsApp automation, and AI chatbots for websites.</li>
+                        <li>Website hosting, security audits, bug fixing, and ongoing maintenance.</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-row">
+                        <span class="exp-role">Video Editor &amp; AI Content Creator</span>
+                        <span class="exp-date">2020 – Present</span>
+                    </div>
+                    <div class="exp-company">Freelance + YouTube + Global Fan Flicks <span class="work-type">Remote &bull; 100+ Projects</span></div>
+                    <ul class="exp-bullets"><li>Edited 100+ videos. Winner of AI Video Contest on Freelancer.com. Tools: Premiere Pro, After Effects, CapCut, HeyGen, Synthesia.</li></ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-row">
+                        <span class="exp-role">Graphic Designer &amp; Social Media Manager</span>
+                        <span class="exp-date">2020 – Present</span>
+                    </div>
+                    <div class="exp-company">Fecund Circle + Various Clients <span class="work-type">Freelance &bull; Remote</span></div>
+                    <ul class="exp-bullets"><li>Created 15+ logos, 100+ social media posts, presentations, and managed content calendars across Instagram, TikTok, LinkedIn.</li></ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">WEBSITES &amp; APPS</div>
+                <div class="app-tags">
+                    <span class="skill-tag">Peak Vista Travels</span>
+                    <span class="skill-tag">Akhuwat Funds</span>
+                    <span class="skill-tag">Ay Stay Bookings</span>
+                    <span class="skill-tag">Fecund Circle</span>
+                    <span class="skill-tag">Sohaib Sajid Co</span>
+                    <span class="skill-tag">Digital Upnovix</span>
+                    <span class="skill-tag">The Elite Vibe</span>
+                    <span class="skill-tag">5 Mobile Apps (React Native)</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">FEATURED PROJECTS</div>
+                <div class="proj-grid">
+                    <div><div class="proj-name">Custom WordPress Themes</div><div class="proj-desc">5+ themes built from scratch for travel, education, agency clients.</div></div>
+                    <div><div class="proj-name">Custom WordPress Plugins</div><div class="proj-desc">Form handlers, CRM integrations, custom post types.</div></div>
+                    <div><div class="proj-name">Twitter Lead Generator</div><div class="proj-desc">n8n workflow collecting leads — live for client.</div></div>
+                    <div><div class="proj-name">Google Maps Lead Scraper</div><div class="proj-desc">Extracts business leads based on location — live.</div></div>
+                    <div><div class="proj-name">Telegram Bots</div><div class="proj-desc">3 custom bots for client communities.</div></div>
+                    <div><div class="proj-name">AI Job Monitor</div><div class="proj-desc">LinkedIn Easy Apply automation (in development).</div></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">CURRENT &amp; UPCOMING</div>
+                <ul class="upcoming-list">
+                    <li><strong>Co-Founder @ Upnovix Digital</strong> — Agency actively growing, taking new clients</li>
+                    <li><strong>Manager @ The Elite Vibe</strong> — Ongoing social media and account management</li>
+                    <li><strong>LinkedIn Job Monitor</strong> — AI-powered Easy Apply automation system (in development)</li>
+                    <li><strong>5 Mobile Apps</strong> — Ready for publishing upon client approval</li>
+                </ul>
+            </div>
+
+        </div><!-- /main -->
+    </div><!-- /body-table -->
+
+</div><!-- /resume-wrapper -->
+
+
+</body>
+</html>
